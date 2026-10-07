@@ -1,0 +1,38 @@
+version: 2
+
+seeds:
+  - name: practices
+    description: "100 fictional practices for the expansion reporting demo."
+    columns:
+      - name: practice_id
+        description: "Unique identifier for each practice."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: practice_name
+        data_tests:
+          - not_null
+
+      - name: region
+        data_tests:
+          - not_null
+    
+  - name: practice_revenue
+    description: "Fictional monthly revenue: one record per practice per month."
+    columns:
+      - name: practice_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('practices')
+                field: practice_id
+
+      - name: revenue_month
+        data_tests:
+          - not_null
+
+      - name: monthly_revenue
+        data_tests:
+          - not_null

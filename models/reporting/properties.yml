@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: rpt_practice_expansion
+    description: "Monthly practice revenue with expansion and contraction classifications."
+    columns:
+      - name: practice_id
+        data_tests:
+          - not_null
+
+      - name: practice_name
+        data_tests:
+          - not_null
+
+      - name: region
+        data_tests:
+          - not_null
+
+      - name: revenue_month
+        data_tests:
+          - not_null
+
+      - name: monthly_revenue
+        data_tests:
+          - not_null
+
+      - name: revenue_change_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - First observed month
+                  - Expansion
+                  - Contraction
+                  - Unchanged
